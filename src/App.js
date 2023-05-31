@@ -1,7 +1,9 @@
 function App() {
   return (
     <>
-      <div>안녕</div>
+      <div>
+        <i class="fa-regular fa-user"></i>안녕
+      </div>
     </>
   );
 }
