@@ -25,7 +25,7 @@ export default function Root() {
     },
     palette: {
       primary: {
-        main: "#668cff",
+        main: "#0e0e75",
       },
     },
   });
