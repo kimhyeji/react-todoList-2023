@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
+import { RecoilRoot } from "recoil";
+import { HashRouter } from "react-router-dom";
 
 import App from "./App";
 
@@ -47,7 +49,11 @@ export default function Root() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+        <RecoilRoot>
+          <HashRouter>
+            <App />
+          </HashRouter>
+        </RecoilRoot>
       </ThemeProvider>
     </>
   );
