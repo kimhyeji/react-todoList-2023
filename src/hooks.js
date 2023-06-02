@@ -2,6 +2,7 @@ import { useState, useRef, useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { todosAtom, lastTodoIdAtom } from "./atoms";
 import { dateToStr } from "./util";
+import { produce } from "immer";
 
 export function useTodosState() {
   const [todos, setTodos] = useRecoilState(todosAtom);
@@ -69,6 +70,18 @@ export function useTodosState() {
     return todos[index];
   };
 
+  const toggleTodoCompleteById = (id) => {
+    const index = findTodoIndexById(id);
+
+    if (index == -1) return;
+
+    setTodos(
+      produce(todos, (draft) => {
+        draft[index].completed = !draft[index].completed;
+      })
+    );
+  };
+
   return {
     todos,
     addTodo,
@@ -78,6 +91,7 @@ export function useTodosState() {
     removeTodoById,
     findTodoIndexById,
     findTodoById,
+    toggleTodoCompleteById,
   };
 }
 

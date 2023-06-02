@@ -5,6 +5,7 @@ import TodoListItem from "../components/TodoListItem";
 export default function TodoList() {
   const todosState = useTodosState();
   const todoOptionDrawerState = useTodoOptionDrawerState();
+  const onCompletedBtnClicked = (id) => todosState.toggleTodoCompleteById(id);
 
   return (
     <>
@@ -17,6 +18,7 @@ export default function TodoList() {
               todo={todo}
               index={index}
               openDrawer={todoOptionDrawerState.open}
+              onCompletedBtnClicked={onCompletedBtnClicked}
             />
           ))}
         </ul>
