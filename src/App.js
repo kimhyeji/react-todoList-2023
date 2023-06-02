@@ -9,6 +9,7 @@ import {
 
 import MainPage from "./pages/MainPage";
 import WritePage from "./pages/WritePage";
+import { NoticeSnackbar } from "./components/NoticeSnackbar";
 
 function App() {
   const location = useLocation();
@@ -29,6 +30,8 @@ function App() {
           </div>
         </Toolbar>
       </AppBar>
+
+      <NoticeSnackbar />
 
       <Routes>
         <Route path="/main" element={<MainPage />} />
