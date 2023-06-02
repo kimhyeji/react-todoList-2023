@@ -1,6 +1,11 @@
 import TodosEmpty from "../components/TodosEmpty";
+import { useTodosState } from "../hooks";
+import TodoList from "./TodoListPage";
+
 export default function MainPage() {
-  const todosEmpty = true;
+  const todosState = useTodosState();
+
+  const todosEmpty = todosState.todos.length == 0;
 
   if (todosEmpty) {
     return <TodosEmpty />;
@@ -8,11 +13,7 @@ export default function MainPage() {
 
   return (
     <>
-      <div className="flex-1 flex justify-center items-center">
-        <div>
-          <span>글쓰기 페이지</span>
-        </div>
-      </div>
+      <TodoList />
     </>
   );
 }
