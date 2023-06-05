@@ -7,6 +7,7 @@ import {
   Divider,
   ListItemButton,
 } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 export default function TodoOptionDrawer({ state }) {
   const todosState = useTodosState();
@@ -48,7 +49,8 @@ export default function TodoOptionDrawer({ state }) {
           <Divider />
           <ListItemButton
             className="!pt-6 !p-5 !items-baseline"
-            onClick={() => {}}
+            component={NavLink}
+            to={`/edit/${todo?.id}`}
           >
             <i className="fa-regular fa-pen-to-square"></i>
             &nbsp;수정

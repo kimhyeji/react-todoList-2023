@@ -9,6 +9,7 @@ import {
 
 import MainPage from "./pages/MainPage";
 import WritePage from "./pages/WritePage";
+import EditPage from "./pages/EditPage";
 import { NoticeSnackbar } from "./components/NoticeSnackbar";
 
 function App() {
@@ -22,10 +23,10 @@ function App() {
           <div className="font-bold select-none">MY NOTE</div>
           <div className="flex-1 flex justify-end">
             {location.pathname != "/write" && (
-              <NavLink to="/write">글작성</NavLink>
+              <NavLink to="/write">할 일 추가</NavLink>
             )}
             {location.pathname == "/write" && (
-              <NavLink to="/main">메인</NavLink>
+              <NavLink to="/main">리스트</NavLink>
             )}
           </div>
         </Toolbar>
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route path="/main" element={<MainPage />} />
         <Route path="/write" element={<WritePage />} />
+        <Route path="/edit/:id" element={<EditPage />} />
         <Route path="/*" element={<Navigate to="/main" />} />
       </Routes>
     </>

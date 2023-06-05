@@ -1,39 +1,47 @@
 import { TextField, Button } from "@mui/material";
+
 import { useTodosState } from "../hooks";
 import { useNoticeSnackbarState } from "../components/NoticeSnackbar";
+import { useParams } from "react-router-dom";
 
-export default function WritePage() {
-  const noticeSnackbarState = useNoticeSnackbarState();
+export default function EditPage() {
+  const { id } = useParams();
   const todosState = useTodosState();
+  const noticeSnackbarState = useNoticeSnackbarState();
+
+  const todo = todosState.findTodoById(id);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     const form = e.target;
 
-    if (form.regDate.value.length == 0) {
+    form.content.value = form.content.value.trim();
+
+    if (form.performDate.value.length == 0) {
       alert("날짜를 입력해주세요.");
-      form.regDate.focus();
+      form.performDate.focus();
       return;
     }
 
     if (form.content.value.length == 0) {
-      alert("내용을 입력해주세요.");
+      alert("할 일을 입력해주세요.");
       form.content.focus();
       return;
     }
 
-    const newTodoId = todosState.addTodo(
+    const newTodoId = todosState.modifyTodoById(
+      todo.id,
       form.regDate.value,
       form.content.value
     );
 
-    noticeSnackbarState.open(`${newTodoId}번 할 일이 추가되었습니다.`);
+    noticeSnackbarState.open(`${todo.id}번 할 일이 수정되었습니다.`, "info");
   };
 
   return (
     <>
-      <form className="flex-1 flex p-10 flex-col gap-7" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="flex-1 flex flex-col gap-7 p-10">
         <TextField
           label="언제 해야 하나요?"
           focused
@@ -55,7 +63,7 @@ export default function WritePage() {
             <i className="fa-solid fa-pencil"></i>
           </span>
           <span>&nbsp;</span>
-          <span>할 일 추가</span>
+          <span>{todo.id}번 할 일 수정</span>
         </Button>
       </form>
     </>

@@ -11,14 +11,14 @@ export function useTodosState() {
 
   lastTodoIdRef.current = lastTodoId;
 
-  const addTodo = (newContent) => {
+  const addTodo = (regDate, newContent) => {
     const id = ++lastTodoIdRef.current;
     setLastTodoId(id);
 
     const newTodo = {
       id,
       content: newContent,
-      regDate: dateToStr(new Date()),
+      regDate: dateToStr(new Date(regDate)),
     };
 
     setTodos((todos) => [newTodo, ...todos]);
