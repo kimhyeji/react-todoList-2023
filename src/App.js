@@ -23,10 +23,14 @@ function App() {
           <div className="font-bold select-none">MY NOTE</div>
           <div className="flex-1 flex justify-end">
             {location.pathname == "/main" && (
-              <NavLink to="/write">할 일 추가</NavLink>
+              <NavLink to="/write" className="select-none">
+                할 일 추가
+              </NavLink>
             )}
             {location.pathname != "/main" && (
-              <NavLink to="/main">리스트</NavLink>
+              <NavLink to="/main" className="select-none">
+                리스트
+              </NavLink>
             )}
           </div>
         </Toolbar>

@@ -33,11 +33,31 @@ export default function TodoList() {
 
   const filteredTodos = getFilteredTodos();
 
-  const sortedTodos = [...filteredTodos].sort((a, b) => {
-    if (a.performDate == b.performDate) return 0;
+  const getSortedTodos = () => {
+    if (sortIndex == 0) {
+      return [...filteredTodos].sort((a, b) => {
+        if (a.performDate == b.performDate) return 0;
 
-    return a.performDate > b.performDate ? 1 : -1;
-  });
+        return a.performDate > b.performDate ? 1 : -1;
+      });
+    } else if (sortIndex == 1) {
+      return [...filteredTodos].sort((a, b) => {
+        if (a.performDate == b.performDate) return 0;
+
+        return a.performDate < b.performDate ? 1 : -1;
+      });
+    } else if (sortIndex == 2) {
+      return [...filteredTodos].sort((a, b) => {
+        if (a.id == b.id) return 0;
+
+        return a.id > b.id ? 1 : -1;
+      });
+    }
+
+    return filteredTodos;
+  };
+
+  const sortedTodos = getSortedTodos();
 
   return (
     <>
@@ -86,9 +106,9 @@ export default function TodoList() {
           className="flex-grow !max-w-[none] px-4"
           label={
             <span className="flex items-baseline">
-              <i class="fa-regular fa-clock"></i>
+              <i className="fa-regular fa-clock"></i>
               <span className="mx-2 whitespave-nowrap">급해요</span>
-              <i class="fa-solid fa-sort-up relative top-[3px]"></i>
+              <i className="fa-solid fa-sort-up relative top-[3px]"></i>
             </span>
           }
           value={0}
@@ -98,9 +118,9 @@ export default function TodoList() {
           className="flex-grow !max-w-[none] px-4"
           label={
             <span className="flex items-baseline">
-              <i class="fa-regular fa-clock"></i>
+              <i className="fa-regular fa-clock"></i>
               <span className="mx-2 whitespave-nowrap">널널해요</span>
-              <i class="fa-solid fa-sort-down relative top-[-3px]"></i>
+              <i className="fa-solid fa-sort-down relative top-[-3px]"></i>
             </span>
           }
           value={1}
@@ -110,9 +130,9 @@ export default function TodoList() {
           className="flex-grow !max-w-[none] px-4"
           label={
             <span className="flex items-baseline">
-              <i class="fa-solid fa-pencil"></i>
+              <i className="fa-solid fa-pencil"></i>
               <span className="mx-2 whitespave-nowrap">작성순</span>
-              <i class="fa-solid fa-sort-up relative top-[3px]"></i>
+              <i className="fa-solid fa-sort-up relative top-[3px]"></i>
             </span>
           }
           value={2}
@@ -122,9 +142,9 @@ export default function TodoList() {
           className="flex-grow !max-w-[none] px-4"
           label={
             <span className="flex items-baseline">
-              <i class="fa-solid fa-pencil"></i>
+              <i className="fa-solid fa-pencil"></i>
               <span className="mx-2 whitespave-nowrap">작성순</span>
-              <i class="fa-solid fa-sort-down relative top-[-3px]"></i>
+              <i className="fa-solid fa-sort-down relative top-[-3px]"></i>
             </span>
           }
           value={3}
