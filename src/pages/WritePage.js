@@ -11,9 +11,9 @@ export default function WritePage() {
 
     const form = e.target;
 
-    if (form.regDate.value.length == 0) {
+    if (form.performDate.value.length == 0) {
       alert("날짜를 입력해주세요.");
-      form.regDate.focus();
+      form.performDate.focus();
       return;
     }
 
@@ -24,7 +24,7 @@ export default function WritePage() {
     }
 
     const newTodoId = todosState.addTodo(
-      form.regDate.value,
+      form.performDate.value,
       form.content.value
     );
 
@@ -41,7 +41,7 @@ export default function WritePage() {
           label="언제 해야 하나요?"
           focused
           type="datetime-local"
-          name="regDate"
+          name="performDate"
         />
 
         <TextField
