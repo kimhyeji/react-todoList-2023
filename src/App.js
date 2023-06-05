@@ -22,10 +22,10 @@ function App() {
           <div className="flex-1"></div>
           <div className="font-bold select-none">MY NOTE</div>
           <div className="flex-1 flex justify-end">
-            {location.pathname != "/write" && (
+            {location.pathname == "/main" && (
               <NavLink to="/write">할 일 추가</NavLink>
             )}
-            {location.pathname == "/write" && (
+            {location.pathname != "/main" && (
               <NavLink to="/main">리스트</NavLink>
             )}
           </div>
