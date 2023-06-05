@@ -2,9 +2,10 @@ import { TextField, Button } from "@mui/material";
 
 import { useTodosState } from "../hooks";
 import { useNoticeSnackbarState } from "../components/NoticeSnackbar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditPage() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const todosState = useTodosState();
   const noticeSnackbarState = useNoticeSnackbarState();
@@ -18,9 +19,9 @@ export default function EditPage() {
 
     form.content.value = form.content.value.trim();
 
-    if (form.performDate.value.length == 0) {
+    if (form.regDate.value.length == 0) {
       alert("날짜를 입력해주세요.");
-      form.performDate.focus();
+      form.regDate.focus();
       return;
     }
 
@@ -37,6 +38,7 @@ export default function EditPage() {
     );
 
     noticeSnackbarState.open(`${todo.id}번 할 일이 수정되었습니다.`, "info");
+    navigate(-1);
   };
 
   const regDateForInput = todo.regDate.substr(0, 16).replace(" ", "T");
