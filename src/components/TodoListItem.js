@@ -9,7 +9,7 @@ export default function TodoListItem({
 }) {
   return (
     <>
-      <li key={todo.id} className="mt-10">
+      <li key={todo.id} className="mt-6 sm:mt-10">
         <div className="flex gap-2">
           <Chip
             label={`번호 : ${todo.id}`}
@@ -17,13 +17,13 @@ export default function TodoListItem({
             className="!pt-1"
           />
           <Chip
-            label={todo.performDate}
+            label={todo.performDate.substr(2, 14)}
             color="primary"
             variant="outlined"
             className="!pt-1"
           />
         </div>
-        <div className="mt-4 shadow rounded-[20px] flex">
+        <div className="mt-2 sm:mt-4 shadow rounded-[20px] flex">
           <Button
             className="flex-shrink-0 !items-start !rounded-[20px_0_0_20px]"
             color="inherit"

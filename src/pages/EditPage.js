@@ -45,7 +45,10 @@ export default function EditPage() {
 
   return (
     <>
-      <form onSubmit={onSubmit} className="flex-1 flex flex-col gap-7 p-10">
+      <form
+        onSubmit={onSubmit}
+        className="flex-1 flex flex-col gap-7 p-10 sm:p-8"
+      >
         <TextField
           label="언제 해야 하나요?"
           focused
