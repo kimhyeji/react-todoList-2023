@@ -23,7 +23,7 @@ function App() {
             to="/main"
             className="font-bold select-none flex self-stretch items-center mr-auto"
           >
-            MY NOTE
+            MY TODOLIST
           </NavLink>
           {location.pathname == "/main" && (
             <NavLink
